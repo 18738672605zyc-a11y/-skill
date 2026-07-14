@@ -1,0 +1,211 @@
+{
+  "name": "novel-writer",
+  "version": "1.0.0",
+  "displayName": "小说写作助手",
+  "description": "帮助你从大纲设计到章节写作，完成一本完整的高质量小说",
+  
+  "triggers": [
+    "写小说",
+    "写一本书", 
+    "开始写故事",
+    "帮我写小说",
+    "写一个故事",
+    "我要写小说",
+    "创作小说",
+    "写本小说"
+  ],
+  
+  "workflow": {
+    "step1_type": {
+      "name": "确定小说类型",
+      "action": "询问用户想要的小说类型",
+      "examples": [
+        "校园青春、霸道总裁、穿越重生、职场爱情、悬疑推理、古风言情等"
+      ],
+      "required": true
+    },
+    
+    "step2_characters": {
+      "name": "设定主角",
+      "action": "询问并记录男女主人设",
+      "fields": {
+        "male_lead": {
+          "name": "男主姓名",
+          "appearance": "外貌特征",
+          "personality": "性格特点（避免：外冷内热、霸道总裁等俗套设定）",
+          "background": "家庭背景",
+          "specialty": "特长/技能",
+          "unique_trait": "独特魅力点"
+        },
+        "female_lead": {
+          "name": "女主姓名", 
+          "appearance": "外貌特征",
+          "personality": "性格特点（避免：傻白甜、软弱等俗套设定）",
+          "background": "家庭背景",
+          "secret": "隐藏身份或秘密（如有）",
+          "unique_trait": "独特魅力点"
+        }
+      },
+      "required": true
+    },
+    
+    "step3_conflict": {
+      "name": "设计冲突",
+      "action": "设计3-5个主要冲突点",
+      "examples": [
+        "身份差异带来的误解",
+        "家族压力",
+        "情敌竞争", 
+        "价值观冲突",
+        "外部事件考验"
+      ],
+      "required": true
+    },
+    
+    "step4_outline": {
+      "name": "生成大纲",
+      "action": "根据以上信息生成详细大纲",
+      "structure": {
+        "chapters": "预计总字数和章节数",
+        "arc1": "相遇与初识",
+        "arc2": "暧昧与心动", 
+        "arc3": "冲突与危机",
+        "arc4": "误会与和解",
+        "arc5": "HE结局"
+      },
+      "required": true
+    },
+    
+    "step5_confirm": {
+      "name": "确认大纲",
+      "action": "将大纲呈现给用户，等待确认",
+      "must_wait": true
+    },
+    
+    "step6_writing": {
+      "name": "分章写作",
+      "action": "用户确认大纲后开始写第一章",
+      "rules": "严格遵守下方写作规范",
+      "chapter_size": "每章2000-4000字",
+      "output": "保存到文件后发送给用户"
+    },
+    
+    "step7_feedback": {
+      "name": "收集反馈",
+      "action": "询问用户对章节的意见",
+      "collect": [
+        "情节流畅度",
+        "人物性格",
+        "对话自然度",
+        "是否需要调整"
+      ]
+    },
+    
+    "step8_repeat": {
+      "name": "修改与续写",
+      "action": "根据反馈修改后写下一章",
+      "loop": true
+    }
+  },
+  
+  "writing_rules": {
+    
+    "ban_phrases": {
+      "description": "严格禁止以下重复表达",
+      "list": [
+        "眼睛进沙子",
+        "顺路", 
+        "字面意思",
+        "猜的",
+        "你问题真多",
+        "习惯了",
+        "因为是你"
+      ]
+    },
+    
+    "emotion_expressions": {
+      "description": "害羞/感动的多样化表达",
+      "good": [
+        "脸微微发烫",
+        "耳尖泛红",
+        "攥紧衣角",
+        "低头盯着脚尖",
+        "假装翻书走神",
+        "小声嘀咕",
+        "慌忙转移话题",
+        "把书立在桌上挡脸",
+        "指尖无意识抠书页",
+        "深呼吸平复心情",
+        "把脸埋进手心",
+        "声音越来越小"
+      ],
+      "bad": [
+        "脸红得像煮熟的虾",
+        "脸红到耳根",
+        "脸红心跳",
+        "眼眶湿润",
+        "鼻子发酸"
+      ]
+    },
+    
+    "dialogue_patterns": {
+      "description": "对话要有变化，避免套路化",
+      "male_flirt": [
+        "【陈述事实型】先描述看到的，再表达感受",
+        "【反问型】不直接回答，而是用问题回应",
+        "【行动型】不说话，直接做某事（牵手、拥抱等）",
+        "【调侃型】轻微打趣，但不失温柔"
+      ],
+      "female_shy": [
+        "【转移话题】岔开话题",
+        "【反驳型】嘴硬但不坚定",
+        "【动作掩饰】用动作代替回答",
+        "【小声确认】确认对方是不是认真的"
+      ]
+    },
+    
+    "scene_descriptions": {
+      "description": "不同时间段要有差异化描写",
+      "morning_library": "清晨薄雾、阳光斜照、书页泛着金光",
+      "afternoon_campus": "暖阳、微风、叶影婆娑",
+      "evening_walk": "夕阳橘红、落日余晖、影子拉长",
+      "night_street": "月光、路灯昏黄、晚风清凉",
+      "rainy_scene": "雨丝、雨伞、雨后泥土清香"
+    },
+    
+    "paragraph_rules": {
+      "max_length": "单段落不超过150字",
+      "dialogue_spacing": "对话段落之间至少空一行",
+      "action_dialogue_mix": "动作和对话穿插，不要连续3段纯对话"
+    }
+  },
+  
+  "quality_checklist": {
+    "per_chapter": [
+      "检查是否有重复台词超过2次",
+      "检查害羞反应是否单一",
+      "检查长段落是否需要拆分",
+      "检查对话是否过于冗余"
+    ],
+    "per_session": [
+      "统计字数进度",
+      "确认情节推进",
+      "收集用户反馈"
+    ]
+  },
+  
+  "output_settings": {
+    "file_format": "UTF-8编码的txt文件",
+    "save_location": "工作目录",
+    "file_name": "{小说名}.txt",
+    "chapter_marker": "## 第X章 {章节名}",
+    "progress_report": "每章完成后发送：字数、本章字数、累计字数"
+  },
+  
+  "user_preferences": {
+    "confirm_before_write": true,
+    "chapter_per_send": 1,
+    "allow_revision": true,
+    "save_midway": true
+  }
+}
